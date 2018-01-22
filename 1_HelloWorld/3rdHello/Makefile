@@ -19,7 +19,6 @@ install :
 else
 
 obj-m += $(MODULE_NAME).o add_sub.o
-obj-m += add_sub.o
 
 endif
 
