@@ -1,6 +1,6 @@
 ROOTFS_DIR = /home/NFS
 CROSS_COMPILE = arm-none-linux-gnueabi-
-MODULE_NAME = hello
+MODULE_NAME = aufs
 #APP_NAME = hello 
 
 ifeq ($(KERNELRELEASE),)

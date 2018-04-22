@@ -1,0 +1,1 @@
+cmd_/home/linux/OK210_drivers/3_key/1_misc/button.ko := /usr/local/arm/arm-2009q3/bin/arm-none-linux-gnueabi-ld -EL -r  -T /home/linux/linux-ok210/scripts/module-common.lds --build-id -o /home/linux/OK210_drivers/3_key/1_misc/button.ko /home/linux/OK210_drivers/3_key/1_misc/button.o /home/linux/OK210_drivers/3_key/1_misc/button.mod.o
