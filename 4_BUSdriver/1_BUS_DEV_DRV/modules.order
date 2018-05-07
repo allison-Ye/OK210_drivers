@@ -1,0 +1,3 @@
+kernel//home/linux/OK210_drivers/4_BUSdriver/1_BUS_DEV_DRV/bus.ko
+kernel//home/linux/OK210_drivers/4_BUSdriver/1_BUS_DEV_DRV/device.ko
+kernel//home/linux/OK210_drivers/4_BUSdriver/1_BUS_DEV_DRV/driver.ko
