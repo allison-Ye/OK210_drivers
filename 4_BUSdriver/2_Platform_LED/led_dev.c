@@ -19,14 +19,14 @@ static struct led_resource led_info = {
 static struct resource led_res[] = {
     //寄存器硬件资源信息
     [0] = {
-        .start = 0xe0200080,
-        .end = 0xe0200080 + 8 - 1,
+        .start = 0xe0200C40,
+        .end = 0xe0200C40 + 8 - 1,
         .flags = IORESOURCE_MEM
     },
     //GPIO管脚编号信息
     [1] = {
-        .start = 3,
-        .end = 3,
+        .start = 1,
+        .end = 1,
         .flags = IORESOURCE_IRQ
     }
 };
@@ -40,7 +40,7 @@ static void led_release(struct device *dev)
 //分配初始化platform_device
 static struct platform_device led_dev = {
     .name = "myled", //必须有
-    .id = -1, 
+    .id = -1, //
     .dev = {
         .platform_data = &led_info, //指向私有的硬件信息
         .release = led_release

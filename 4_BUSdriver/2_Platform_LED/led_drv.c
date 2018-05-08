@@ -6,23 +6,24 @@
 #include <linux/device.h>
 #include <linux/uaccess.h>
 #include <linux/io.h>
-
-
-static void *gpio_base; //寄存器的虚拟起始地址
-static int pin; //操作的管脚编号
-static unsigned long *gpiocon, *gpiodata;
-
-#define LED_ON  0x100001
-#define LED_OFF 0x100002
-
-static int major;
-static struct cdev led_cdev;
-static struct class *cls;
+#include "led.h"
+//#define LED_ON  0x100001
+//#define LED_OFF 0x100002
 
 struct led_resource {
     char *name;
     int productid;
 };
+static void *gpio_base; //寄存器的虚拟起始地址
+static int pin; //操作的管脚编号
+static unsigned long *gpiocon, *gpiodata;
+
+
+
+static int major;
+static struct cdev led_cdev;
+static struct class *cls;
+
 
 static int led_ioctl(struct inode *inode,
                         struct file *file,
@@ -53,7 +54,7 @@ static struct file_operations led_fops = {
 
 //led_probe被执行说明硬件和软件匹配成功
 //pdev指向匹配成功的led_dev硬件信息
-static int led_probe(struct platform_device *pdev)
+static int led_probe (struct platform_device *pdev)
 {
     //1.通过pdev获取硬件信息
     struct resource *reg_res; //寄存器
@@ -73,6 +74,7 @@ static int led_probe(struct platform_device *pdev)
     size = reg_res->end - reg_res->start + 1;
 
     //2.处理硬件信息 
+	
     //2.1地址映射
     gpio_base = ioremap(reg_res->start, size);
     gpiocon = (unsigned long *)gpio_base;
@@ -102,7 +104,7 @@ static int led_probe(struct platform_device *pdev)
 }
 
 //卸载platform_device或者卸载platform_driver调用
-//pdev指向匹配成功的led_dev硬件细细你
+//pdev指向匹配成功的led_dev硬件信息
 static int led_remove(struct platform_device *pdev)
 {
     dev_t dev = MKDEV(major, 0);
