@@ -170,6 +170,6 @@ module_init(Irq_key_init);
 module_exit(Irq_key_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("webee");
+MODULE_AUTHOR("Allison");
 MODULE_DESCRIPTION("Character drivers for irq key");
 
