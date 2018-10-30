@@ -1,14 +1,24 @@
-ifneq ($(KERNELRELEASE),)
+ROOTFS_DIR = /home/NFS
+CROSS_COMPILE = arm-linux-
+MODULE_NAME = irq_key
+APP_NAME = key_test
 
-obj-m := irq_key.o
+ifeq ($(KERNELRELEASE),)
+KERNEL_DIR =/home/linux/linux-ok210
+CUR_DIR =$(shell pwd)
 
+all :
+	make -C $(KERNEL_DIR) M=$(CUR_DIR) modules
+	$(CROSS_COMPILE)gcc  $(APP_NAME).c -o $(APP_NAME) -static
+clean :
+	make -C $(KERNEL_DIR) M=$(CUR_DIR) clean
+	rm -rf $(APP_NAME)
+
+install :
+	cp -rvaf *ko  $(APP_NAME)  $(ROOTFS_DIR)/
 else
-	
-KDIR := /home/webee210v2/linux-3.8_webee210v2
 
-all:
-	make -C $(KDIR) M=$(PWD) modules ARCH=arm CROSS_COMPILE=arm-linux-
-clean:
-	rm -f *.ko *.o *.mod.o *.mod.c *.symvers
+obj-m = $(MODULE_NAME).o
 
 endif
+

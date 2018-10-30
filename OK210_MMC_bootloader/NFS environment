@@ -1,0 +1,14 @@
+mtdpart=80000 400000 3000000
+bootdelay=3
+baudrate=115200
+ethaddr=00:22:12:34:56:90
+netmask=255.255.255.0
+bootcmd=nand read C0008000 100000 500000; bootm C0008000
+gatewayip=192.168.0.1
+serverip=192.168.0.3
+ipaddr=192.168.0.20
+bootargs=noinitrd console=ttySAC2,115200 init=/init root=/dev/nfs rw nfsroot=192.168.0.3:/home/NFS ip=192.168.0.20:192.168.0.3:192.168.0.1:255.255.255.f
+
+
+
+

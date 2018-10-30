@@ -29,15 +29,15 @@ struct button_irq_desc {
 };
 
 static struct button_irq_desc button_irqs [] = {
-	{IRQ_EINT(0), S5PV210_GPH2(0), 0x01, "S1"}, /* S1 */
-	{IRQ_EINT(1), S5PV210_GPH2(1), 0x02, "S2"}, /* S2 */
-	{IRQ_EINT(2), S5PV210_GPH2(2), 0x03, "S3"}, /* S3 */
-	{IRQ_EINT(3), S5PV210_GPH2(3), 0x04, "S4"}, /* S4 */
+	{IRQ_EINT(0), S5PV210_GPH0(0), 0x01, "S1"}, /* S1 */
+	{IRQ_EINT(1), S5PV210_GPH0(1), 0x02, "S2"}, /* S2 */
+	{IRQ_EINT(2), S5PV210_GPH0(2), 0x03, "S3"}, /* S3 */
+	{IRQ_EINT(3), S5PV210_GPH0(3), 0x04, "S4"}, /* S4 */
 	
-	{IRQ_EINT(4), S5PV210_GPH3(0), 0x05, "S5"}, /* S5 */
-	{IRQ_EINT(5), S5PV210_GPH3(1), 0x06, "S6"}, /* S6 */
-	{IRQ_EINT(6), S5PV210_GPH3(2), 0x07, "S7"}, /* S7 */
-	{IRQ_EINT(7), S5PV210_GPH3(3), 0x08, "S8"}, /* S8 */
+	{IRQ_EINT(4), S5PV210_GPH0(4), 0x05, "S5"}, /* S5 */
+	{IRQ_EINT(5), S5PV210_GPH0(5), 0x06, "S6"}, /* S6 */
+	{IRQ_EINT(6), S5PV210_GPH0(6), 0x07, "S7"}, /* S7 */
+	{IRQ_EINT(7), S5PV210_GPH0(7), 0x08, "S8"}, /* S8 */
 };
 
 static DECLARE_WAIT_QUEUE_HEAD(button_waitq);
@@ -86,6 +86,7 @@ static int irq_key_open(struct inode *inode, struct file *file)
 	{
 		err = request_irq(button_irqs[i].irq, key_interrupt, IRQF_TRIGGER_FALLING|IRQF_TRIGGER_RISING, 
                           button_irqs[i].name, (void *)&button_irqs[i]);
+		printk("request_irq No. %d is succeed\n",i);
 	}
 	/* ◊¢≤·÷–∂œ ß∞‹¥¶¿Ì */
 	if (err)

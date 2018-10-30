@@ -1,0 +1,1 @@
+cmd_/home/linux/OK210_drivers/linux_kernel/lab42/lab42.ko := /usr/local/arm/arm-2009q3/bin/arm-none-linux-gnueabi-ld -EL -r  -T /home/linux/linux-ok210/scripts/module-common.lds --build-id -o /home/linux/OK210_drivers/linux_kernel/lab42/lab42.ko /home/linux/OK210_drivers/linux_kernel/lab42/lab42.o /home/linux/OK210_drivers/linux_kernel/lab42/lab42.mod.o
