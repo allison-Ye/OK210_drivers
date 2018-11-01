@@ -27,7 +27,8 @@ int main(void)
 	fds.events = POLLIN; 
 	while(1)
 	{
-		/* poll函数返回0时，表示5s时间到了，而这段时间里，没有事件发生"数据可读" */  
+		/* poll函数返回0时，表示5s时间到了，而这段时间里，没有事件发生"数据可读" 
+			如果有数据可用，poll函数会返回非0*/  
         ret = poll(&fds,1,5000);  
         if(ret == 0)  
         {  
